@@ -39,6 +39,7 @@ class PicroftGoogleAiyVoicehat(MycroftSkill):
                 if pressed_time<longpress_threshold:
                     # stop listning
                     #call(['python', "/home/pi/mbus.py", "localhost", "mycroft.stop"])
+                    self.pwm.ChangeDutyCycle(0)
                 else:
                     # call(['python', "/home/pi/mbus.py", "localhost", "mycroft.mic.listen"])        
                     # start listning
