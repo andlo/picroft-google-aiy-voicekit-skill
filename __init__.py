@@ -10,7 +10,7 @@ class PicroftGoogleAiyVoicehat(MycroftSkill):
     def __init__(self):
         MycroftSkill.__init__(self)
     
-    def initialize(self):
+    def initialize(self, channel):
         self.channel = channel
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(channel, GPIO.OUT)
