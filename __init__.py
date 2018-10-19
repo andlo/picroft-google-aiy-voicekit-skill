@@ -16,7 +16,7 @@ class PicroftGoogleAiyVoicehat(MycroftSkill):
         self.pwm = GPIO.PWM(channel, 100)
 
     
-        self.schedule_repeating_event(self.google.aiy, None,0.5, 'GoogleAIY')
+        self.schedule_repeating_event(self.google_aiy, None,0.5, 'GoogleAIY')
 
         self.add_event('recognizer_loop:record_begin',  
                     self.handle_listener_started)  
@@ -27,7 +27,7 @@ class PicroftGoogleAiyVoicehat(MycroftSkill):
     def handle_voicehat_aiy_google_picroft(self, message):
         self.speak_dialog('voicehat.aiy.google.picroft')
 
-    def google.aiy(self, message):
+    def google_aiy(self, message):
         while True:
             if GPIO.input(gpio_pin) == False: # Listen for the press, the loop until it steps
                 self.log.info("Started press")
