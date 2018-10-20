@@ -47,7 +47,7 @@ class PicroftGoogleAiyVoicehat(MycroftSkill):
             else:
                 # start listning
                 self.log.info("Start Listning")
-                handle_listning(self)
+                self.handle_listning
 
     def handle_listener_started(self, message):  
         # code to excecute when active listening begins...
