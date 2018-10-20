@@ -12,30 +12,9 @@ Andreas Lorensen (@andlo)
 ## Supported Devices 
 platform_picroft 
 
-## Category
-
 ## Tags
 #googlevoicehat
-#AIY
+#aiy
 #Googleaiy
 #voicehat
-
-
-
-
-
-## Picroft Google Aiy Voicehat
-Enables Google AIY voicehat led and button
-
-## Description
-This enables the led and button on the Google AIY voicekit. 
-
-The button led turns on when Mycroft is listning. If button is pressed he begins to listen. If the button is pressed for a longer time he stops whatever he is dooing.
-
-## Examples
-No voice commands is used in this skill
-
-## Credits
-Andreas Lorensen
-
 
