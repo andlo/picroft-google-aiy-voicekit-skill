@@ -11,10 +11,7 @@ class PicroftGoogleAiyVoicehat(MycroftSkill):
         MycroftSkill.__init__(self)
     
     def initialize(self):
-        my_led = LED(channel = 25)
-        #my_led.start()
-        #my_led.set_state(LED.PULSE_QUICK)
-        
+
         #GPIO.setmode(GPIO.BCM)
         #GPIO.setup(channel, GPIO.OUT)
         #self.pwm = GPIO.PWM(self.channel, 100)
@@ -48,61 +45,18 @@ class PicroftGoogleAiyVoicehat(MycroftSkill):
                 self.log.info("Button pressed %d" % pressed_time)
                 if pressed_time<longpress_threshold:
                     # stop listning
-                    #call(['python', "/home/pi/mbus.py", "localhost", "mycroft.stop"])
-                    #self.pwm.ChangeDutyCycle(0)
                     self.log.info("Longpress button")
                 else:
-                    # call(['python', "/home/pi/mbus.py", "localhost", "mycroft.mic.listen"])        
                     # start listning
-                    #self.pwm.ChangeDutyCycle(100)
                     self.log.info("press button")
-
 
     def handle_listener_started(self, message):  
         # code to excecute when active listening begins...
-        #self.pwm.ChangeDutyCycle(100)
-        my_led.set_state(LED.ON)
         self.log.info("LED ON")
 
     def handle_listener_ended(self, message):  
         # code to excecute when active listening begins...  
-        #self.pwm.ChangeDutyCycle(0)
-        my_led.set_state(LED.OFF)
         self.log.info("LED OFF")
-
-class LED:
-    """
-    Simple usage:
-        my_led = LED(channel = 25)
-        my_led.start()
-        my_led.set_state(LED.BEACON)
-        my_led.stop()
-    """
-
-    OFF = 0
-    ON = 1
-    BLINK = 2
-    BLINK_3 = 3
-    BEACON = 4
-    BEACON_DARK = 5
-    DECAY = 6
-    PULSE_SLOW = 7
-    PULSE_QUICK = 8
-
-    def __init__(self, channel):
-            #self.animator = threading.Thread(target=self._animate)
-            self.channel = channel
-            #self.iterator = None
-            #self.running = False
-            self.state = None
-            self.sleep = 0
-            GPIO.setmode(GPIO.BCM)
-            GPIO.setup(channel, GPIO.OUT)
-            self.pwm = GPIO.PWM(channel, 100)
-            #self.lock = threading.Lock()
-
-    
-
 
 
 def create_skill():
