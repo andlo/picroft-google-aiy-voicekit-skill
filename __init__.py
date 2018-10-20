@@ -33,20 +33,20 @@ class PicroftGoogleAiyVoicehat(MycroftSkill):
         longpress_threshold=2 # If button is held this length of time, tells system to leave light on
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(gpio_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        while True:
-            if GPIO.input(gpio_pin) == False: # Listen for the press, the loop until it steps
-                self.log.info("Started press")
-                pressed_time=time.time()
-                while GPIO.input(gpio_pin) == False:
-                    time.sleep(0.2)
-                pressed_time=time.time()-pressed_time
-                self.log.info("Button pressed %d" % pressed_time)
-                if pressed_time<longpress_threshold:
-                    # stop listning
-                    self.log.info("Stop listning")
-                else:
-                    # start listning
-                    self.log.info("Start Listning")
+        #while True:
+        if GPIO.input(gpio_pin) == False: # Listen for the press, the loop until it steps
+            self.log.info("Started press")
+            pressed_time=time.time()
+            while GPIO.input(gpio_pin) == False:
+                time.sleep(0.2)
+            pressed_time=time.time()-pressed_time
+            self.log.info("Button pressed %d" % pressed_time)
+            if pressed_time<longpress_threshold:
+                # stop listning
+                self.log.info("Stop listning")
+            else:
+                # start listning
+                self.log.info("Start Listning")
 
     def handle_listener_started(self, message):  
         # code to excecute when active listening begins...
