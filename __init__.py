@@ -62,7 +62,7 @@ class PicroftGoogleAiyVoicehat(MycroftSkill):
         GPIO.output(25,GPIO.LOW)
 
     def handle_listning(self):  
-        self.emitter.emit(Message("recognizer_loop:wake_up"))
+        self.bus(Message("recognizer_loop:record_begin"))
 
 
 def create_skill():
