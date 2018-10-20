@@ -4,6 +4,7 @@ import time
 import RPi.GPIO as GPIO
 
 
+# TODO read this https://thepihut.com/blogs/raspberry-pi-tutorials/27968772-turning-on-an-led-with-your-raspberry-pis-gpio-pins
 
 
 class PicroftGoogleAiyVoicehat(MycroftSkill):
@@ -12,9 +13,9 @@ class PicroftGoogleAiyVoicehat(MycroftSkill):
     
     def initialize(self):
 
-        #GPIO.setmode(GPIO.BCM)
-        #GPIO.setup(channel, GPIO.OUT)
-        #self.pwm = GPIO.PWM(self.channel, 100)
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setwarnings(False)
+        GPIO.setup(25,GPIO.OUT)
     
         self.schedule_repeating_event(self.google_aiy, None,0.5, 'GoogleAIY')
 
@@ -50,11 +51,12 @@ class PicroftGoogleAiyVoicehat(MycroftSkill):
     def handle_listener_started(self, message):  
         # code to excecute when active listening begins...
         self.log.info("LED ON")
+        GPIO.output(25,GPIO.HIGH)
 
     def handle_listener_ended(self, message):  
         # code to excecute when active listening begins...  
         self.log.info("LED OFF")
-
+        GPIO.output(25,GPIO.LOW)
 
 def create_skill():
     return PicroftGoogleAiyVoicehat()
