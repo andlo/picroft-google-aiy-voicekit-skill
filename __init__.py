@@ -28,10 +28,7 @@ class PicroftGoogleAiyVoicehat(MycroftSkill):
         self.add_event('recognizer_loop:record_end',  
                     self.handle_listener_ended)
 
-    @intent_file_handler('voicehat.aiy.google.picroft.intent')
-    def handle_voicehat_aiy_google_picroft(self, message):
-        self.speak_dialog('voicehat.aiy.google.picroft')
-
+    
     def google_aiy(self, message):
         longpress_threshold=2 
         if GPIO.input(23) == False: 
