@@ -1,5 +1,5 @@
 # <img src='AIY logo_blue.png' card_color='#022B4F' width='50' height='50' style='vertical-align:bottom'/> Google AIY voicehat
-Enables Google AIY voicehat
+Enables Google AIY voicekit
 
 ## About 
 This enables the led and button on the Google AIY voicekit. 
@@ -13,8 +13,9 @@ Andreas Lorensen (@andlo)
 platform_picroft 
 
 ## Tags
-#googlevoicehat
+#googlevoicekit
 #aiy
 #Googleaiy
+#voicekit
 #voicehat
 
