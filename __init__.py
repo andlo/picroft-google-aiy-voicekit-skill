@@ -16,6 +16,11 @@ class PicroftGoogleAiyVoicehat(MycroftSkill):
         GPIO.setup(self.channel, GPIO.OUT)
         self.pwm = GPIO.PWM(self.channel, 100)
 
+        my_led = LED(channel = 25)
+        my_led.start()
+        my_led.set_state(LED.PULSE_QUICK)
+
+
     
         self.schedule_repeating_event(self.google_aiy, None,0.5, 'GoogleAIY')
 
@@ -53,12 +58,13 @@ class PicroftGoogleAiyVoicehat(MycroftSkill):
 
     def handle_listener_started(self, message):  
         # code to excecute when active listening begins...
-        self.pwm.ChangeDutyCycle(100)
+        #self.pwm.ChangeDutyCycle(100)
+        my_led.set_state(LED.ON)
 
     def handle_listener_ended(self, message):  
         # code to excecute when active listening begins...  
-        self.pwm.ChangeDutyCycle(0)
-
+        #self.pwm.ChangeDutyCycle(0)
+        my_led.set_state(LED.OFF)
 class LED:
     """
     Simple usage:
