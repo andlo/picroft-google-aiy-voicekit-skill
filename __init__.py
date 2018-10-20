@@ -15,9 +15,6 @@ class PicroftGoogleAiyVoicehat(MycroftSkill):
         #GPIO.setmode(GPIO.BCM)
         #GPIO.setup(channel, GPIO.OUT)
         #self.pwm = GPIO.PWM(self.channel, 100)
-
-        
-
     
         self.schedule_repeating_event(self.google_aiy, None,0.5, 'GoogleAIY')
 
@@ -45,10 +42,10 @@ class PicroftGoogleAiyVoicehat(MycroftSkill):
                 self.log.info("Button pressed %d" % pressed_time)
                 if pressed_time<longpress_threshold:
                     # stop listning
-                    self.log.info("Longpress button")
+                    self.log.info("Stop listning")
                 else:
                     # start listning
-                    self.log.info("press button")
+                    self.log.info("Start Listning")
 
     def handle_listener_started(self, message):  
         # code to excecute when active listening begins...
