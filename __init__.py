@@ -12,7 +12,7 @@ class PicroftGoogleAiyVoicehat(MycroftSkill):
     
     def initialize(self):
         my_led = LED(channel = 25)
-        my_led.start()
+        #my_led.start()
         my_led.set_state(LED.PULSE_QUICK)
         
         #GPIO.setmode(GPIO.BCM)
