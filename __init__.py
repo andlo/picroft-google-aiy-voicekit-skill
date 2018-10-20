@@ -88,16 +88,16 @@ class LED:
     PULSE_QUICK = 8
 
     def __init__(self, channel):
-            self.animator = threading.Thread(target=self._animate)
+            #self.animator = threading.Thread(target=self._animate)
             self.channel = channel
-            self.iterator = None
-            self.running = False
+            #self.iterator = None
+            #self.running = False
             self.state = None
             self.sleep = 0
             GPIO.setmode(GPIO.BCM)
             GPIO.setup(channel, GPIO.OUT)
             self.pwm = GPIO.PWM(channel, 100)
-            self.lock = threading.Lock()
+            #self.lock = threading.Lock()
 
     
 
