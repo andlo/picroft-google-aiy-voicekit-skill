@@ -21,7 +21,7 @@ class PicroftGoogleAiyVoicehat(MycroftSkill):
         GPIO.setup(25,GPIO.OUT)
         GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         
-        self.schedule_repeating_event(self.google_aiy, None,0.1, 'GoogleAIY')
+        self.schedule_repeating_event(self.handle_button, None,0.1, 'GoogleAIY')
 
         self.add_event('recognizer_loop:record_begin',  
                     self.handle_listener_started)  
@@ -29,29 +29,23 @@ class PicroftGoogleAiyVoicehat(MycroftSkill):
                     self.handle_listener_ended)
 
     
-    def google_aiy(self, message):
+    def handle_button(self, message):
         longpress_threshold=2 
         if GPIO.input(23) == False: 
             pressed_time=time.time()
             while GPIO.input(23) == False:
                 time.sleep(0.2)
             pressed_time=time.time()-pressed_time
-            self.log.info("Button pressed %d" % pressed_time)
             if pressed_time<longpress_threshold:
-                self.log.info("Short press")
                 self.bus.emit(Message("mycroft.mic.listen"))
             else:
-                self.log.info("Long press ")
                 self.bus.emit(Message("mycroft.stop"))
 
     def handle_listener_started(self, message):  
         # code to excecute when active listening begins...
-        self.log.info("LED ON")
         GPIO.output(25,GPIO.HIGH)
 
     def handle_listener_ended(self, message):  
-        # code to excecute when active listening begins...  
-        self.log.info("LED OFF")
         GPIO.output(25,GPIO.LOW)
 
 def create_skill():
