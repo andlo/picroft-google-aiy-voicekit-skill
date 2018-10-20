@@ -50,10 +50,12 @@ class PicroftGoogleAiyVoicehat(MycroftSkill):
                     # stop listning
                     #call(['python', "/home/pi/mbus.py", "localhost", "mycroft.stop"])
                     #self.pwm.ChangeDutyCycle(0)
+                    self.log.info("Longpress button")
                 else:
                     # call(['python', "/home/pi/mbus.py", "localhost", "mycroft.mic.listen"])        
                     # start listning
                     #self.pwm.ChangeDutyCycle(100)
+                    self.log.info("press button")
 
 
     def handle_listener_started(self, message):  
