@@ -21,7 +21,7 @@ class PicroftGoogleAiyVoicehat(MycroftSkill):
         GPIO.setup(25,GPIO.OUT)
         GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         
-        self.schedule_repeating_event(self.google_aiy, None,0.5, 'GoogleAIY')
+        self.schedule_repeating_event(self.google_aiy, None,0.1, 'GoogleAIY')
 
         self.add_event('recognizer_loop:record_begin',  
                     self.handle_listener_started)  
