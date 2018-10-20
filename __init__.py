@@ -58,6 +58,26 @@ class PicroftGoogleAiyVoicehat(MycroftSkill):
     def handle_listener_ended(self, message):  
         # code to excecute when active listening begins...  
         self.pwm.ChangeDutyCycle(0)
+
+class LED:
+    """
+    Simple usage:
+        my_led = LED(channel = 25)
+        my_led.start()
+        my_led.set_state(LED.BEACON)
+        my_led.stop()
+    """
+
+    OFF = 0
+    ON = 1
+    BLINK = 2
+    BLINK_3 = 3
+    BEACON = 4
+    BEACON_DARK = 5
+    DECAY = 6
+    PULSE_SLOW = 7
+    PULSE_QUICK = 8
+
         
 
 def create_skill():
