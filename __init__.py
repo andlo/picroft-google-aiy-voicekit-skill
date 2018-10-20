@@ -17,7 +17,8 @@ class PicroftGoogleAiyVoicehat(MycroftSkill):
         GPIO.setmode(GPIO.BCM)
         GPIO.setwarnings(False)
         GPIO.setup(25,GPIO.OUT)
-    
+        GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        
         self.schedule_repeating_event(self.google_aiy, None,0.5, 'GoogleAIY')
 
         self.add_event('recognizer_loop:record_begin',  
@@ -30,10 +31,10 @@ class PicroftGoogleAiyVoicehat(MycroftSkill):
         self.speak_dialog('voicehat.aiy.google.picroft')
 
     def google_aiy(self, message):
-        gpio_pin=23 # The GPIO pin the button is attached to
+        #gpio_pin=23 # The GPIO pin the button is attached to
         longpress_threshold=2 # If button is held this length of time, tells system to leave light on
-        GPIO.setmode(GPIO.BCM)
-        GPIO.setup(gpio_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        #GPIO.setmode(GPIO.BCM)
+        #GPIO.setup(gpio_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         #while True:
         if GPIO.input(gpio_pin) == False: # Listen for the press, the loop until it steps
             self.log.info("Started press")
@@ -43,13 +44,13 @@ class PicroftGoogleAiyVoicehat(MycroftSkill):
             pressed_time=time.time()-pressed_time
             self.log.info("Button pressed %d" % pressed_time)
             if pressed_time<longpress_threshold:
-                # stop listning
-                self.log.info("Stop listning")
-                self.handle_listning()
-            else:
                 # start listning
-                self.log.info("Start Listning")
-                self.handle_listning()
+                self.log.info("Start listning")
+                self.bus.emit(Message("mycroft.mic.listen"))
+            else:
+                # stop 
+                self.log.info("Stop ")
+                self.bus.emit(Message("mycroft.stop"))
 
     def handle_listener_started(self, message):  
         # code to excecute when active listening begins...
@@ -60,10 +61,6 @@ class PicroftGoogleAiyVoicehat(MycroftSkill):
         # code to excecute when active listening begins...  
         self.log.info("LED OFF")
         GPIO.output(25,GPIO.LOW)
-
-    def handle_listning(self):  
-        self.bus.emit(Message("mycroft.mic.listen"))
-
 
 def create_skill():
     return PicroftGoogleAiyVoicehat()
