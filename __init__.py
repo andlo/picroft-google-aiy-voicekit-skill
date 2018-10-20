@@ -44,10 +44,11 @@ class PicroftGoogleAiyVoicehat(MycroftSkill):
             if pressed_time<longpress_threshold:
                 # stop listning
                 self.log.info("Stop listning")
+                self.handle_listning()
             else:
                 # start listning
                 self.log.info("Start Listning")
-                self.handle_listning
+                self.handle_listning()
 
     def handle_listener_started(self, message):  
         # code to excecute when active listening begins...
