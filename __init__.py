@@ -53,5 +53,5 @@ class PicroftGoogleAiyVoicekit(MycroftSkill):
         GPIO.output(25,GPIO.LOW)
 
 def create_skill():
-    return PicroftGoogleAiyVoicehat()
+    return PicroftGoogleAiyVoicekit()
 
