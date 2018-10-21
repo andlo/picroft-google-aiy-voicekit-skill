@@ -14,7 +14,8 @@ You then need to add the mycroft user to the gpio group with the command
 ````
 sudo usermod -g gpio mycroft
 ````
- 
+## Category
+**IoT**
 
 ## Credits 
 Andreas Lorensen (@andlo)
