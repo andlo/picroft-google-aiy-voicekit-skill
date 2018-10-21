@@ -8,7 +8,7 @@ import RPi.GPIO as GPIO
 # TODO read this https://thepihut.com/blogs/raspberry-pi-tutorials/27968772-turning-on-an-led-with-your-raspberry-pis-gpio-pins
 
 
-class PicroftGoogleAiyVoicehat(MycroftSkill):
+class PicroftGoogleAiyVoicekit(MycroftSkill):
     def __init__(self):
         MycroftSkill.__init__(self)
     
