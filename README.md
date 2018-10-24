@@ -1,4 +1,4 @@
-# <img src='AIY logo_blue.png' card_color='#022B4F' width='50' height='50' style='vertical-align:bottom'/> Google AIY voicekit
+# <img src='AIY_logo_blue.png' card_color='#022B4F' width='50' height='50' style='vertical-align:bottom'/> Google AIY voicekit
 Enables Google AIY voicekit
 
 ## About 
