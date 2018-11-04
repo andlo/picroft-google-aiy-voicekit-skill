@@ -50,9 +50,9 @@ echo "defaults.ctl.card 0" > /etc/asound.conf
 echo "defaults.pcm.card 0" >> /etc/asound.conf
 echo "defaults.pcm.device 0" >> /etc/asound.conf
 
-echo "Rebuild venv...
+echo "Rebuild venv..."
 # rebuild venv
-mycroft-core/dev_setup
+mycroft-core/dev_setup.sh
 
 echo "We are done - Reboot is neded !"
-brea
+break
