@@ -5,7 +5,7 @@ if [ ! -f /etc/apt/sources.list.d/aiyprojects.list ]; then
     echo "adding aptsourses"
     echo "deb https://dl.google.com/aiyprojects/deb stable main" | sudo tee -a /etc/apt/sources.list.d/aiyprojects.list
     wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-fi        
+fi
 echo "Updating and upgrading..."
 sudo apt-get -y update
 sudo apt-get -y upgrade
@@ -43,7 +43,7 @@ sudo sed -i \
     -e "s/mpg123 -a hw:0,0 %1/mpg123 %1/" \
     /etc/mycroft/mycroft.conf
 
-echo "Install asound.conf..." 
+echo "Install asound.conf..."
 # Install asound.conf
 #sudo cp AIY-asound.conf /etc/asound.conf
 echo "defaults.ctl.card 0" > /etc/asound.conf
@@ -52,7 +52,7 @@ echo "defaults.pcm.device 0" >> /etc/asound.conf
 
 echo "Rebuild venv..."
 # rebuild venv
-mycroft-core/dev_setup.sh
+/home/pi/mycroft-core/dev_setup.sh
 
 echo "We are done - Reboot is neded !"
 break
