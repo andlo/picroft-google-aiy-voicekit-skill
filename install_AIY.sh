@@ -46,9 +46,9 @@ sudo sed -i \
 echo "Install asound.conf..."
 # Install asound.conf
 #sudo cp AIY-asound.conf /etc/asound.conf
-echo "defaults.ctl.card 0" > /etc/asound.conf
-echo "defaults.pcm.card 0" >> /etc/asound.conf
-echo "defaults.pcm.device 0" >> /etc/asound.conf
+sudo echo "defaults.ctl.card 0" > /etc/asound.conf
+sudo echo "defaults.pcm.card 0" >> /etc/asound.conf
+sudo echo "defaults.pcm.device 0" >> /etc/asound.conf
 
 echo "Rebuild venv..."
 # rebuild venv
