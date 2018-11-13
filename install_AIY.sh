@@ -50,8 +50,6 @@ echo "defaults.ctl.card 0" | sudo tee --append /etc/asound.conf
 echo "defaults.pcm.card 0" | sudo tee --append /etc/asound.conf
 echo "defaults.pcm.device 0" |sudo tee --append /etc/asound.conf
 
-echo 'deb blah ... blah' | sudo tee --append /etc/apt/sources.list
-
 echo "Rebuild venv..."
 # rebuild venv
 /home/pi/mycroft-core/dev_setup.sh
