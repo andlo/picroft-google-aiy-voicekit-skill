@@ -46,10 +46,13 @@ sudo sed -i \
 
 echo "Install asound.conf..."
 # Install asound.conf
-#sudo cp AIY-asound.conf /etc/asound.conf
-echo "defaults.ctl.card 0" | sudo tee --append /etc/asound.conf
-echo "defaults.pcm.card 0" | sudo tee --append /etc/asound.conf
-echo "defaults.pcm.device 0" |sudo tee --append /etc/asound.conf
+if grep -q "default.ctl.card 0" "${FILE}" || grep -q "default.pcm.card 0" "${FILE}" || grep -q "default.pcm.device 0" "${FILE}" ; then
+  echo "asound.conf alreddy OK"
+else
+  echo "defaults.ctl.card 0" | sudo tee --append /etc/asound.conf
+  echo "defaults.pcm.card 0" | sudo tee --append /etc/asound.conf
+  echo "defaults.pcm.device 0" |sudo tee --append /etc/asound.conf
+fi
 
 echo "Rebuild venv..."
 # rebuild venv
