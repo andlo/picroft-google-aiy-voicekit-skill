@@ -56,4 +56,4 @@ echo "Rebuild venv..."
 /home/pi/mycroft-core/dev_setup.sh
 
 echo "We are done - Reboot is neded !"
-break
+
