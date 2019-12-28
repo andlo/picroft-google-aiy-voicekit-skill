@@ -22,6 +22,9 @@ from mycroft.messagebus.message import Message
 import time
 import RPi.GPIO as GPIO
 
+# GPIO pins
+BUTTON = 23
+LED = 25
 
 class PicroftGoogleAiyVoicekit(MycroftSkill):
     def __init__(self):
@@ -29,15 +32,12 @@ class PicroftGoogleAiyVoicekit(MycroftSkill):
 
     def initialize(self):
         try:
-            # pin 23 is the GPIO pin the button is attached to
-            # pin 25 is the GPIO pin the LED light is attached to
             GPIO.setmode(GPIO.BCM)
             GPIO.setwarnings(False)
-            GPIO.setup(25, GPIO.OUT)
-            GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-            pass
+            GPIO.setup(LED, GPIO.OUT)
+            GPIO.setup(BUTTON, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         except GPIO.error:
-            self.log.warning("Cant initialize GPIO - skill will not load")
+            self.log.warning("Can't initialize GPIO - skill will not load")
             self.speak_dialog("error.initialise")
         finally:
             self.schedule_repeating_event(self.handle_button,
@@ -49,11 +49,11 @@ class PicroftGoogleAiyVoicekit(MycroftSkill):
 
     def handle_button(self, message):
         longpress_threshold = 2
-        if not GPIO.input(23):
+        if not GPIO.input(BUTTON):
             pressed_time = time.time()
-            while GPIO.input(23):
+            while not GPIO.input(BUTTON):
                 time.sleep(0.2)
-            pressed_time = time.time()-pressed_time
+            pressed_time = time.time() - pressed_time
             if pressed_time < longpress_threshold:
                 self.bus.emit(Message("mycroft.mic.listen"))
             else:
@@ -61,10 +61,10 @@ class PicroftGoogleAiyVoicekit(MycroftSkill):
 
     def handle_listener_started(self, message):
         # code to excecute when active listening begins...
-        GPIO.output(25, GPIO.HIGH)
+        GPIO.output(LED, GPIO.HIGH)
 
     def handle_listener_ended(self, message):
-        GPIO.output(25, GPIO.LOW)
+        GPIO.output(LED, GPIO.LOW)
 
 
 def create_skill():
