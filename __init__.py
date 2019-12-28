@@ -51,7 +51,7 @@ class PicroftGoogleAiyVoicekit(MycroftSkill):
         longpress_threshold = 2
         if not GPIO.input(BUTTON):
             pressed_time = time.time()
-            while GPIO.input(BUTTON):
+            while not GPIO.input(BUTTON):
                 time.sleep(0.2)
             pressed_time = time.time() - pressed_time
             if pressed_time < longpress_threshold:
