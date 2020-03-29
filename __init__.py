@@ -36,6 +36,7 @@ class PicroftGoogleAiyVoicekit(MycroftSkill):
             GPIO.setwarnings(False)
             GPIO.setup(LED, GPIO.OUT)
             GPIO.setup(BUTTON, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+            GPIO.add_event_detect(BUTTON, GPIO.FALLING, bouncetime = 500)
         except GPIO.error:
             self.log.warning("Can't initialize GPIO - skill will not load")
             self.speak_dialog("error.initialise")
@@ -49,7 +50,8 @@ class PicroftGoogleAiyVoicekit(MycroftSkill):
 
     def handle_button(self, message):
         longpress_threshold = 2
-        if not GPIO.input(BUTTON):
+        if GPIO.event_detected(BUTTON):
+            self.log.info("GPIO.event_detected")
             pressed_time = time.time()
             while not GPIO.input(BUTTON):
                 time.sleep(0.2)

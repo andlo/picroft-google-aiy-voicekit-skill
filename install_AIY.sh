@@ -3,8 +3,8 @@ echo "Installing Google AIY Voice HAT and microphone board (Voice Kit v1)"
 # Get AIY drivers
 if [ ! -f /etc/apt/sources.list.d/aiyprojects.list ]; then
     echo "adding aptsourses"
-    echo "deb https://dl.google.com/aiyprojects/deb stable main" | sudo tee -a /etc/apt/sources.list.d/aiyprojects.list
-    wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+    echo "deb https://packages.cloud.google.com/apt aiyprojects-stable main" | sudo tee /etc/apt/sources.list.d/aiyprojects.list
+    wget -q -O - https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 fi
 echo "Updating and upgrading..."
 sudo apt-get -y update
